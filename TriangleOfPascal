@@ -1,0 +1,39 @@
+public class Triangle {
+
+    public Triangle(int height) {
+        this.height = height;
+    }
+    int height;
+
+    public void newTriangle() { // создание и вывод треугольника в консоль
+
+        long[][] pascalTriangle = new long[height][];
+        for (int n = 0; n < height; n++ ) {
+            pascalTriangle[n] = new long[n + 1];
+            //pascalTriangle[n][n] = 1;
+            for (int k = 0; k <= n; k++) {
+                pascalTriangle[n][k] = c(n, k);
+            }
+        }
+
+        for (int n = 0; n < height; n++) {
+            for (int k = 0; k <= n; k++) {
+                System.out.print(pascalTriangle[n][k] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+   public long c (int n,int k) { //возвращает число по координатам места в треугольнике
+        return fact(n) / (fact(k) * fact(n - k));
+   }
+
+    long fact(int num) { //возвращает факториал числа
+        long f = 1;
+        for (int i = 1; i <= num; i++) {
+            f *= i;
+        }
+        return f;
+    }
+
+}
